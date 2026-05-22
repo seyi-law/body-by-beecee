@@ -1,0 +1,23 @@
+
+> dev
+> next dev --port 3000
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3000
+   - Network:      http://172.22.64.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 10.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 15.4s (649 modules)
+ GET / 200 in 21986ms
+ GET / 200 in 517ms
+ ✓ Compiled in 8.6s (649 modules)
+ GET / 200 in 469ms
+ GET / 200 in 2417ms
+ ✓ Compiled in 2.4s (635 modules)
+ GET / 200 in 2687ms
+ ✓ Compiled in 1507ms (649 modules)
+ GET / 200 in 323ms
+ GET / 200 in 3692ms
+Terminate batch job (Y/N)? 
