@@ -6,7 +6,10 @@ import { SiteHeader } from "../components/SiteHeader";
 import { Hero } from "../components/Hero";
 import { ProductList } from "../components/ProductList";
 import { CartDrawer } from "../components/CartDrawer";
-import { Benefits } from "../components/Benefits";
+import { FeaturedCollection } from "../components/FeaturedCollection";
+import { EditorialShowcase } from "../components/EditorialShowcase";
+import { BlogPreview } from "../components/BlogPreview";
+import { GalleryBand } from "../components/GalleryBand";
 import { Reviews } from "../components/Reviews";
 import { SiteFooter } from "../components/SiteFooter";
 import { Toast } from "../components/Toast";
@@ -95,7 +98,7 @@ export default function Home() {
     <main className="page-shell">
       <SiteHeader itemCount={itemCount} onOpenCart={() => setCartOpen(true)} />
 
-      <Hero onAddToCart={addToCart} />
+      <Hero onAddToCart={addToCart} onViewDetails={(product) => setActiveProduct(product)} />
 
       <section className="product-section" id="collection">
         <ProductList
@@ -105,7 +108,10 @@ export default function Home() {
         />
       </section>
 
-      <Benefits />
+      <FeaturedCollection />
+      <EditorialShowcase />
+      <BlogPreview />
+      <GalleryBand />
       <Reviews />
       <SiteFooter />
 

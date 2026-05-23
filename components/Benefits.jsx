@@ -6,12 +6,14 @@ import { benefits } from "../app/data/content";
 export function Benefits() {
   return (
     <section className="benefit-section" id="benefits">
-      <div className="section-heading reveal">
+      <div className="section-heading" data-animate="fade-up">
         <span className="eyebrow">
           <ShieldCheck size={14} />
           Why Body by Beecee
         </span>
-        <h2>Luxury skin care that actually works.</h2>
+        <h2 data-text-split data-delay="100">
+          Luxury skin care that <span className="text-accent">actually works.</span>
+        </h2>
         <p>
           Every product is built around one promise — skin that looks and feels
           better with every single use.
@@ -19,13 +21,15 @@ export function Benefits() {
         <div className="section-heading__rule" aria-hidden="true" />
       </div>
 
-      <div className="benefit-grid">
+      <div className="benefit-grid" data-stagger="110">
         {benefits.map((benefit, index) => {
           const Icon = benefit.icon;
           return (
             <article
-              className={`benefit-card glass-panel reveal ${index === 1 ? "reveal--delay" : ""}`}
+              className="benefit-card glass-panel"
               key={benefit.title}
+              data-animate="zoom-in"
+              data-tilt
             >
               <span className="benefit-card__icon icon-accent">
                 <Icon size={20} />

@@ -1,4 +1,4 @@
-import { BadgePercent, ShieldCheck, Truck } from "lucide-react";
+import { BadgePercent, Leaf, ShieldCheck, Sparkles, Truck } from "lucide-react";
 
 export const logoSrc = "/images/brand/body-by-beecee-logo.png";
 
@@ -13,16 +13,18 @@ export const featuredProduct = {
   image: "/images/products/orange-serum.webp",
   imageAlt: "/images/products/orange-serum-3.webp",
   description:
-    "Lightweight, silky, and deeply nourishing — it melts into your skin like morning sunlight. Gentle, but powerful. Infused with Vitamin C, Tranexamic Acid, and Ferulic Acid to gradually restore clarity, radiance, and your natural glow.",
+    "A silky vitamin-rich serum made to brighten uneven tone, soften the look of dark marks, and leave skin with a calm, healthy glow.",
+  badge: "Best seller",
   badges: ["Best seller", "Staff pick"],
   notes: [
-    "Brightens dark spots & uneven tone",
-    "Vitamin C + Tranexamic + Ferulic Acid",
-    "Calm hydration — even for sensitive skin",
+    "Vitamin C, Tranexamic Acid, and Ferulic Acid",
+    "Targets dullness and uneven tone",
+    "Lightweight finish for morning or evening routines",
   ],
 };
 
 export const collection = [
+  featuredProduct,
   {
     id: "velvet-butter",
     name: "Velvet Cloud Body Butter",
@@ -30,23 +32,25 @@ export const collection = [
     price: 15000,
     compareAt: 18000,
     size: "200 ml",
+    rating: 4.8,
     image:
       "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1200&q=80",
     description:
-      "A rich whipped formula that softens dry skin and seals in moisture for 24 hours. Sink in and glow.",
+      "A whipped body cream that cushions dry skin in long-lasting moisture without feeling heavy.",
     badge: "Hydrating",
   },
   {
     id: "rose-mist",
     name: "Soft Rose Mist",
-    category: "Fragrance",
+    category: "Face mist",
     price: 10000,
     compareAt: 13000,
     size: "120 ml",
+    rating: 4.7,
     image:
       "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=80",
     description:
-      "A fresh floral mist that lifts your mood and leaves a delicate, clean trail — beautiful for layering.",
+      "A dewy floral mist for refreshing skin between routine steps or reviving makeup during the day.",
     badge: "Fresh",
   },
   {
@@ -56,11 +60,26 @@ export const collection = [
     price: 8000,
     compareAt: 10000,
     size: "250 g",
+    rating: 4.8,
     image:
       "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
     description:
-      "A gentle sugar-salt polish that smooths away dull skin, leaving you prepped and perfectly primed for oils.",
+      "A gentle polish that sweeps away dullness and leaves skin smooth, soft, and ready for oil or butter.",
     badge: "Smooth",
+  },
+  {
+    id: "clarity-cleanser",
+    name: "Milk Silk Cleanser",
+    category: "Cleanser",
+    price: 12000,
+    compareAt: 15000,
+    size: "150 ml",
+    rating: 4.9,
+    image:
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "A creamy cleanser that lifts away buildup while keeping the skin barrier comfortable and plush.",
+    badge: "Gentle",
   },
   {
     id: "lip-nectar",
@@ -69,11 +88,120 @@ export const collection = [
     price: 6000,
     compareAt: 8000,
     size: "12 ml",
+    rating: 4.7,
     image:
       "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?auto=format&fit=crop&w=1200&q=80",
     description:
-      "A glossy plumping treatment with a buildable tint that keeps lips soft, hydrated, and kissably smooth all day.",
+      "A glossy treatment that keeps lips soft, hydrated, and lightly luminous throughout the day.",
     badge: "New",
+  },
+];
+
+export const heroCards = [
+  {
+    name: "Sophie Vera",
+    role: "Glow Club",
+    image:
+      "https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Lamide M.",
+    role: "Verified buyer",
+    image:
+      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=80",
+  },
+];
+
+export const featuredCollection = {
+  eyebrow: "Skin-care collection",
+  title: "The Ultimate Skincare Collection",
+  productName: "Lumi Dew Hydrating Glow Serum",
+  description:
+    "A soft, glassy routine built for radiance: cleanse, hydrate, brighten, and seal in a finish that looks alive in every light.",
+  image:
+    "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=1400&q=80",
+  stats: [
+    { icon: Leaf, label: "Skin-kind" },
+    { icon: Sparkles, label: "Glow-first" },
+    { icon: ShieldCheck, label: "Barrier care" },
+  ],
+};
+
+export const editorialFeatures = [
+  {
+    title: "Natura Drop - Hydrating Face Mist",
+    copy:
+      "A fine, milky mist that gives thirsty skin a soft-focus reset. Keep it on your vanity, in your tote, and anywhere your glow needs a little weather support.",
+    image:
+      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1300&q=80",
+    imageAlt:
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1300&q=80",
+    cta: "Explore mist",
+  },
+  {
+    title: "Shine Shot - Glow Boosting Serum",
+    copy:
+      "A radiant serum step for days when your skin needs bounce, brightness, and a little main-character lighting.",
+    image:
+      "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1300&q=80",
+    imageAlt:
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1300&q=80",
+    cta: "View routine",
+    reversed: true,
+  },
+];
+
+export const blogPosts = [
+  {
+    tag: "Rituals",
+    title: "Why our serum ritual protects your glow barrier",
+    image:
+      "https://images.unsplash.com/photo-1600428853876-fb5a850b444f?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    tag: "Practice",
+    title: "Why beauty meets confidence in the mirror",
+    image:
+      "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    tag: "Skin talk",
+    title: "Why our beauty masks are good to go off script",
+    image:
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    tag: "Advice",
+    title: "Five ways the magic of beauty matters",
+    image:
+      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=80",
+  },
+];
+
+export const galleryImages = [
+  "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80",
+  "https://images.unsplash.com/photo-1567721913486-6585f069b332?auto=format&fit=crop&w=700&q=80",
+];
+
+export const visualTestimonials = [
+  {
+    quote:
+      "My skin has never felt this calm and glowy. I now build my whole morning around the serum.",
+    name: "Bianca",
+    role: "Verified buyer",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    quote:
+      "It feels luxurious without being complicated. The glow is immediate, but the softness lasts.",
+    name: "Ife",
+    role: "Glow Club member",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
@@ -87,7 +215,7 @@ export const promoCodes = [
   {
     code: "BUNDLE15",
     label: "15% off",
-    description: "Orders above ₦40,000",
+    description: "Orders above NGN 40,000",
     discount: 0.15,
     minSubtotal: 40000,
   },
@@ -100,50 +228,29 @@ export const promoCodes = [
   },
 ];
 
-export const trustMetrics = [
-  { value: "24h", label: "Dispatch" },
-  { value: "4.9/5", label: "Customer rating" },
-  { value: "40k+", label: "Free shipping threshold" },
-];
-
 export const benefits = [
   {
     icon: ShieldCheck,
     title: "Skin-first formulas",
-    text: "Every product is free from harsh chemicals and built to be kind, effective, and easy to love every single day.",
+    text: "Every product is designed to be kind, effective, and easy to love every single day.",
   },
   {
     icon: Truck,
     title: "Fast delivery",
-    text: "Orders are packed and dispatched within 24 hours so your glow arrives before you lose the moment.",
+    text: "Orders are packed quickly so your glow arrives before you lose the moment.",
   },
   {
     icon: BadgePercent,
     title: "Rewards for loyalty",
-    text: "Stack promo codes, unlock bundle savings, and get more as you shop — because your skin deserves it.",
+    text: "Unlock promo codes and bundle savings as you build the routine your skin loves.",
   },
 ];
 
-export const testimonials = [
-  {
-    quote:
-      "The Silk Glow Oil changed my whole morning routine. My skin has never looked so radiant — I get asked about it every week.",
-    name: "Nia Morgan",
-    role: "Verified buyer",
-  },
-  {
-    quote:
-      "I bought the full bundle and I have not looked back. The body butter alone is worth every cent. Absolutely obsessed.",
-    name: "Ari James",
-    role: "Verified buyer",
-  },
-  {
-    quote:
-      "I have tried so many body oils and this is the only one that doesn't leave a residue. Lightweight, glowy, perfect.",
-    name: "Tara Ellis",
-    role: "Verified buyer",
-  },
-];
+export const testimonials = visualTestimonials.map(({ quote, name, role }) => ({
+  quote,
+  name,
+  role,
+}));
 
 export const formatter = new Intl.NumberFormat("en-NG", {
   style: "currency",

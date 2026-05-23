@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { AnimationProvider } from "../components/AnimationProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +29,10 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AnimationProvider />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,39 +1,38 @@
 "use client";
 
+import Image from "next/image";
 import { Star } from "lucide-react";
-import { testimonials } from "../app/data/content";
+import { visualTestimonials } from "../app/data/content";
 
 export function Reviews() {
   return (
     <section className="review-section" id="reviews">
-      <div className="section-heading reveal">
-        <span className="eyebrow">
-          <Star size={14} />
-          Customer love
-        </span>
-        <h2>Real women. Real results.</h2>
-        <p>
-          Thousands of women trust Body by Beecee to be part of their daily
-          ritual. Here&apos;s what they have to say.
-        </p>
-        <div className="section-heading__rule" aria-hidden="true" />
+      <div className="review-section__header" data-animate="fade-up">
+        <h2>What Our Clients Are Saying</h2>
       </div>
 
-      <div className="review-grid">
-        {testimonials.map((testimonial, index) => (
-          <article
-            className={`review-card glass-panel reveal ${index === 1 ? "reveal--delay" : ""}`}
-            key={testimonial.name}
-          >
-            <div className="review-card__stars icon-accent" aria-hidden="true">
-              {[...Array(5)].map((_, starIndex) => (
-                <Star key={starIndex} size={15} fill="currentColor" />
-              ))}
+      <div className="review-editorial" data-stagger="110">
+        {visualTestimonials.map((testimonial) => (
+          <article className="review-card" key={testimonial.name} data-animate="fade-up">
+            <div className="review-card__image">
+              <Image
+                src={testimonial.image}
+                alt={testimonial.name}
+                fill
+                sizes="(max-width: 900px) 90vw, 34vw"
+              />
             </div>
-            <p>{testimonial.quote}</p>
-            <div className="review-card__author">
-              <strong>{testimonial.name}</strong>
-              <span>{testimonial.role}</span>
+            <div className="review-card__content">
+              <div className="review-card__stars" aria-hidden="true">
+                {[...Array(5)].map((_, starIndex) => (
+                  <Star key={starIndex} size={14} fill="currentColor" />
+                ))}
+              </div>
+              <p>{testimonial.quote}</p>
+              <div className="review-card__author">
+                <strong>{testimonial.name}</strong>
+                <span>{testimonial.role}</span>
+              </div>
             </div>
           </article>
         ))}

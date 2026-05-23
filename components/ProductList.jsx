@@ -1,37 +1,50 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import { ProductCard } from "./ProductCard";
+
+const filterLabels = ["Serums", "Mists", "Creams"];
 
 export function ProductList({ collection, onAdd, onProductClick }) {
   return (
-    <div>
-      <div className="section-heading reveal">
-        <span className="eyebrow">
-          <Sparkles size={14} />
-          The collection
-        </span>
-        <h2>Everything your skin deserves.</h2>
+    <div className="collection-layout">
+      <div className="product-section__intro" data-animate="fade-up">
+        <div>
+          <span className="section-kicker">Our Product</span>
+          <h2>Your Glow</h2>
+        </div>
         <p>
-          From deep moisture to a fresh floral lift — each product is crafted to
-          layer beautifully with the rest of the range.
+          A tightly edited shelf of high-touch formulas for everyday radiance,
+          quiet confidence, and skin that feels cared for.
         </p>
-        <div className="section-heading__rule" aria-hidden="true" />
       </div>
 
-      <div className="product-grid">
-        {collection.map((product, index) => (
-          <div
-            className={`reveal ${index % 2 === 1 ? "reveal--delay" : ""}`}
-            key={product.id}
+      <div className="product-tabs" aria-label="Product categories">
+        {filterLabels.map((label, index) => (
+          <button
+            className={`product-tab${index === 0 ? " product-tab--active" : ""}`}
+            type="button"
+            key={label}
           >
-            <ProductCard
-              product={product}
-              onAdd={onAdd}
-              onClick={() => onProductClick(product)}
-            />
-          </div>
+            {label}
+          </button>
         ))}
+      </div>
+
+      <div className="product-grid" data-stagger="90">
+        {collection.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onAdd={onAdd}
+            onClick={() => onProductClick(product)}
+          />
+        ))}
+      </div>
+
+      <div className="product-section__footer">
+        <a className="button button--primary button--small" href="#collection">
+          See collection
+        </a>
       </div>
     </div>
   );
