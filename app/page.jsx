@@ -18,9 +18,9 @@ import { ProductModal } from "../components/ProductModal";
 export default function Home() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [promoInput, setPromoInput] = useState("GLOW10");
+  const [promoInput, setPromoInput] = useState("");
   const [appliedPromo, setAppliedPromo] = useState("");
-  const [promoMessage, setPromoMessage] = useState("Use GLOW10 for 10% off any order.");
+  const [promoMessage, setPromoMessage] = useState("");
   const [toast, setToast] = useState(null);
   const [activeProduct, setActiveProduct] = useState(null);
 
@@ -127,7 +127,6 @@ export default function Home() {
         promoInput={promoInput}
         setPromoInput={setPromoInput}
         appliedPromo={appliedPromo}
-        promoMessage={promoMessage}
         displayPromoMessage={displayPromoMessage}
         onApplyPromo={applyPromo}
         onIncrease={(id) => updateQuantity(id, 1)}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, ShoppingBag, Sparkles, X } from "lucide-react";
 import { logoSrc } from "../app/data/content";
 
 const navItems = [
@@ -65,7 +65,9 @@ export function SiteHeader({ itemCount, onOpenCart }) {
           </nav>
 
           <div className="site-header__actions">
-            <span className="site-header__note">Free shipping over NGN 40,000</span>
+            <a className="site-header__shop-link" href="#collection">
+              Shop now
+            </a>
             <button
               className="button button--ghost button--header bag-button"
               type="button"
@@ -96,6 +98,11 @@ export function SiteHeader({ itemCount, onOpenCart }) {
           className={`site-header__mobile-menu${mobileOpen ? " site-header__mobile-menu--open" : ""}`}
           id="mobile-nav"
         >
+          <div className="site-header__mobile-note">
+            <Sparkles size={15} />
+            <span>Free shipping over NGN 40,000</span>
+          </div>
+
           <nav className="site-nav site-nav--mobile" aria-label="Mobile">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} onClick={handleNavClick}>

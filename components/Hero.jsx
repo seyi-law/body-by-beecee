@@ -1,48 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Leaf, Play, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Leaf, Sparkles, Star } from "lucide-react";
 import { featuredProduct, formatPrice, heroCards } from "../app/data/content";
 
 export function Hero({ onAddToCart, onViewDetails = () => {} }) {
   return (
     <section className="hero editorial-hero" id="top">
-      <div className="hero__portrait-card" data-animate="fade-right">
-        <div className="hero__portrait">
-          <Image
-            src="https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?auto=format&fit=crop&w=1000&q=80"
-            alt="Woman with glowing skin"
-            fill
-            priority
-            sizes="(max-width: 900px) 90vw, 28vw"
-          />
-        </div>
-        <button
-          className="hero__play"
-          type="button"
-          onClick={() => onViewDetails(featuredProduct)}
-          aria-label="View featured product details"
-        >
-          <Play size={16} fill="currentColor" />
-        </button>
-        <div className="hero__natural">
-          <strong>100%</strong>
-          <span>Natural</span>
-        </div>
-      </div>
-
       <div className="hero__copy" data-animate="fade-up">
         <span className="eyebrow hero__eyebrow">
           <Sparkles size={14} />
-          Body by Beecee
+          Beauty meets luxury
         </span>
         <h1 className="hero__headline" data-text-split>
-          Beauty Meets Luxury
+          Orange C Serum
         </h1>
         <p className="hero__lede">
-          Soft, radiant skin care with an editorial glow: brightening serums,
-          plush body rituals, and daily essentials made to feel beautiful from
-          the first touch.
+          A silky brightening serum powered by Vitamin C, Tranexamic Acid, and
+          Ferulic Acid to soften the look of dark marks and bring dull skin
+          back to glow.
         </p>
 
         <div className="hero__actions">
@@ -84,14 +60,25 @@ export function Hero({ onAddToCart, onViewDetails = () => {} }) {
         </div>
       </div>
 
-      <div className="hero__product-swatch" data-animate="fade-left">
-        <Image
-          src={featuredProduct.imageAlt}
-          alt={featuredProduct.name}
-          fill
-          priority
-          sizes="(max-width: 900px) 70vw, 18vw"
-        />
+      <div className="hero__product-stage" data-animate="fade-left">
+        <button
+          className="hero__product-card"
+          type="button"
+          onClick={() => onViewDetails(featuredProduct)}
+          aria-label={`View details for ${featuredProduct.name}`}
+        >
+          <Image
+            src={featuredProduct.image}
+            alt={featuredProduct.name}
+            fill
+            priority
+            sizes="(max-width: 900px) 92vw, 46vw"
+          />
+        </button>
+        <div className="hero__product-badge">
+          <strong>{featuredProduct.rating.toFixed(1)}</strong>
+          <span>Rated by glow lovers</span>
+        </div>
       </div>
     </section>
   );

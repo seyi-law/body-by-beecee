@@ -18,7 +18,7 @@ export function CartItem({ item, onIncrease, onDecrease, onRemove }) {
             <p className="cart-item__meta">{formatPrice(item.price)} each</p>
           </div>
           <button
-            className="icon-button"
+            className="icon-button cart-item__remove"
             type="button"
             aria-label={`Remove ${item.name}`}
             onClick={() => onRemove(item.id)}
@@ -47,7 +47,7 @@ export function CartItem({ item, onIncrease, onDecrease, onRemove }) {
               <Plus size={14} />
             </button>
           </div>
-          <strong>{formatPrice(item.price * item.quantity)}</strong>
+          <strong className="cart-item__line-total">{formatPrice(item.price * item.quantity)}</strong>
         </div>
       </div>
     </li>

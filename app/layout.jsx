@@ -18,7 +18,7 @@ export const metadata = {
   description:
     "A modern cosmetic landing page with a featured product, live cart, and promo codes.",
   icons: {
-    icon: "/images/brand/body-by-beecee-logo.png",
+    icon: "/images/brand/bodybecee-logo.svg",
   },
 };
 

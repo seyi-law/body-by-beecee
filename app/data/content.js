@@ -1,6 +1,8 @@
 import { BadgePercent, Leaf, ShieldCheck, Sparkles, Truck } from "lucide-react";
 
-export const logoSrc = "/images/brand/body-by-beecee-logo.png";
+export const logoSrc = "/images/brand/bodybecee-logo.svg";
+export const beeceeUgbohImage = "/images/brand/BeeCee%20Ugboh.jpg";
+export const topeMarkOdigieImage = "/images/brand/Tope%20Mark-Odigie.jpg";
 
 export const featuredProduct = {
   id: "orange-c-serum",
@@ -99,16 +101,14 @@ export const collection = [
 
 export const heroCards = [
   {
-    name: "Sophie Vera",
-    role: "Glow Club",
-    image:
-      "https://images.unsplash.com/photo-1596815064285-45ed8a9c0463?auto=format&fit=crop&w=400&q=80",
+    name: "BeeCee Ugboh",
+    role: "Verified buyer",
+    image: beeceeUgbohImage,
   },
   {
-    name: "Lamide M.",
+    name: "Tope Mark-Odigie",
     role: "Verified buyer",
-    image:
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=80",
+    image: topeMarkOdigieImage,
   },
 ];
 
@@ -189,19 +189,17 @@ export const galleryImages = [
 export const visualTestimonials = [
   {
     quote:
-      "My skin has never felt this calm and glowy. I now build my whole morning around the serum.",
-    name: "Bianca",
+      "My skin feels brighter, softer, and more even. The Orange C Serum has become my daily glow step.",
+    name: "BeeCee Ugboh",
     role: "Verified buyer",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+    image: beeceeUgbohImage,
   },
   {
     quote:
-      "It feels luxurious without being complicated. The glow is immediate, but the softness lasts.",
-    name: "Ife",
-    role: "Glow Club member",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
+      "It feels luxurious without being complicated. The glow is immediate, and the softness lasts.",
+    name: "Tope Mark-Odigie",
+    role: "Verified buyer",
+    image: topeMarkOdigieImage,
   },
 ];
 
