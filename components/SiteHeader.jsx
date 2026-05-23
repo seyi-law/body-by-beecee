@@ -8,7 +8,6 @@ import { logoSrc } from "../app/data/content";
 const navItems = [
   { href: "#collection", label: "Shop" },
   { href: "#benefits", label: "Rituals" },
-  { href: "#journal", label: "Journal" },
   { href: "#reviews", label: "Reviews" },
 ];
 

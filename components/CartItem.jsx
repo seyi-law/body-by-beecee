@@ -15,7 +15,10 @@ export function CartItem({ item, onIncrease, onDecrease, onRemove }) {
         <div className="cart-item__row">
           <div>
             <p className="cart-item__title">{item.name}</p>
-            <p className="cart-item__meta">{formatPrice(item.price)} each</p>
+            <p className="cart-item__meta">
+              {item.size || ""}
+              {item.quantity > 1 ? `${item.size ? " • " : ""}${formatPrice(item.price)} each` : ""}
+            </p>
           </div>
           <button
             className="icon-button cart-item__remove"

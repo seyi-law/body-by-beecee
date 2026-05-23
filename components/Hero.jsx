@@ -16,24 +16,51 @@ export function Hero({ onAddToCart, onViewDetails = () => {} }) {
           Orange C Serum
         </h1>
         <p className="hero__lede">
-          A silky brightening serum powered by Vitamin C, Tranexamic Acid, and
-          Ferulic Acid to soften the look of dark marks and bring dull skin
-          back to glow.
+          {featuredProduct.description}
         </p>
 
-        <div className="hero__actions">
+        <button
+          className="hero__read-more"
+          type="button"
+          onClick={() => onViewDetails(featuredProduct)}
+        >
+          <span>Read the glow story</span>
+        </button>
+
+        <div className="hero__product-stage hero__product-stage--mobile" data-animate="fade-up">
           <button
-            className="button button--primary"
+            className="hero__product-card"
             type="button"
-            onClick={() => onAddToCart(featuredProduct)}
+            onClick={() => onViewDetails(featuredProduct)}
+            aria-label={`View details for ${featuredProduct.name}`}
+          >
+            <Image
+              src={featuredProduct.image}
+              alt={featuredProduct.name}
+              fill
+              priority
+              sizes="92vw"
+            />
+          </button>
+          <div className="hero__product-badge">
+            <strong>{featuredProduct.rating.toFixed(1)}</strong>
+            <span>Customer rating</span>
+          </div>
+        </div>
+
+        <div className="hero__actions">
+          <a
+            className="button button--primary"
+            href="#collection"
           >
             Shop now
             <ArrowRight size={16} />
-          </button>
+          </a>
           <button
             className="button button--soft hero__leaf-button"
             type="button"
-            onClick={() => onViewDetails(featuredProduct)}
+            onClick={() => onAddToCart(featuredProduct)}
+            aria-label={`Add ${featuredProduct.name} to cart — ${formatPrice(featuredProduct.price)}`}
           >
             <Leaf size={16} />
             {formatPrice(featuredProduct.price)}
@@ -60,7 +87,7 @@ export function Hero({ onAddToCart, onViewDetails = () => {} }) {
         </div>
       </div>
 
-      <div className="hero__product-stage" data-animate="fade-left">
+      <div className="hero__product-stage hero__product-stage--desktop" data-animate="fade-left">
         <button
           className="hero__product-card"
           type="button"
@@ -77,7 +104,7 @@ export function Hero({ onAddToCart, onViewDetails = () => {} }) {
         </button>
         <div className="hero__product-badge">
           <strong>{featuredProduct.rating.toFixed(1)}</strong>
-          <span>Rated by glow lovers</span>
+          <span>Customer rating</span>
         </div>
       </div>
     </section>

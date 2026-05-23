@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingBag, Sparkles, BadgePercent, X, ArrowRight, Truck, ChevronDown } from "lucide-react";
+import { ShoppingBag, Sparkles, BadgePercent, X, ArrowRight, ChevronDown } from "lucide-react";
 import { formatPrice } from "../app/data/content";
 import { CartItem } from "./CartItem";
 
@@ -24,9 +24,6 @@ export function CartDrawer({
   onRemove,
 }) {
   const [promoOpen, setPromoOpen] = useState(false);
-  const freeShippingThreshold = 40000;
-  const freeShippingRemaining = Math.max(freeShippingThreshold - (subtotal - discount), 0);
-  const shippingProgress = Math.min(((subtotal - discount) / freeShippingThreshold) * 100, 100);
   const showPromoControls = promoOpen || Boolean(appliedPromo || displayPromoMessage);
 
   return (
@@ -78,18 +75,7 @@ export function CartDrawer({
         <div className="cart-drawer__body">
           {cart.length > 0 ? (
             <>
-              <div className="shipping-progress" aria-label="Free shipping progress">
-                <div className="shipping-progress__row">
-                  <span>
-                    <Truck size={16} />
-                    {shipping === 0 ? "Free shipping unlocked" : `${formatPrice(freeShippingRemaining)} away from free shipping`}
-                  </span>
-                  <strong>{Math.round(shippingProgress)}%</strong>
-                </div>
-                <div className="shipping-progress__track">
-                  <span style={{ width: `${shippingProgress}%` }} />
-                </div>
-              </div>
+
 
               <ul className="cart-list">
                 {cart.map((item) => (
@@ -137,10 +123,7 @@ export function CartDrawer({
                 <span>Discount</span>
                 <strong>-{formatPrice(discount)}</strong>
               </div>
-              <div className="summary-row">
-                <span>Shipping</span>
-                <strong>{shipping === 0 ? "Free" : formatPrice(shipping)}</strong>
-              </div>
+
 
               <div className={`promo-panel ${showPromoControls ? "promo-panel--open" : ""}`}>
                 <button

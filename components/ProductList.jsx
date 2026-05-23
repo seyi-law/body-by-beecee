@@ -1,15 +1,27 @@
 "use client";
 
+import { useState } from "react";
 import { ProductCard } from "./ProductCard";
 
-const filterLabels = ["Serums", "Mists", "Creams"];
+const rangeFilters = [
+  { label: "All", desktopLabel: "All Products", value: null },
+  { label: "Orange", desktopLabel: "Orange Range", value: "Orange" },
+  { label: "Banana", desktopLabel: "Banana Range", value: "Banana" },
+  { label: "Tigernut", desktopLabel: "Tigernut Range", value: "Tigernut" },
+];
 
 export function ProductList({ collection, onAdd, onProductClick }) {
+  const [activeRange, setActiveRange] = useState(null);
+
+  const filtered = activeRange
+    ? collection.filter((p) => p.range === activeRange)
+    : collection;
+
   return (
     <div className="collection-layout">
       <div className="product-section__intro" data-animate="fade-up">
         <div>
-          <span className="section-kicker">Our Product</span>
+          <span className="section-kicker">Our Products</span>
           <h2>Your Glow</h2>
         </div>
         <p>
@@ -18,20 +30,22 @@ export function ProductList({ collection, onAdd, onProductClick }) {
         </p>
       </div>
 
-      <div className="product-tabs" aria-label="Product categories">
-        {filterLabels.map((label, index) => (
+      <div className="product-tabs" aria-label="Product range filter">
+        {rangeFilters.map((filter) => (
           <button
-            className={`product-tab${index === 0 ? " product-tab--active" : ""}`}
+            className={`product-tab${activeRange === filter.value ? " product-tab--active" : ""}`}
             type="button"
-            key={label}
+            key={filter.label}
+            onClick={() => setActiveRange(filter.value)}
           >
-            {label}
+            <span className="product-tab__desktop-label">{filter.desktopLabel}</span>
+            <span className="product-tab__mobile-label">{filter.label}</span>
           </button>
         ))}
       </div>
 
-      <div className="product-grid" data-stagger="90">
-        {collection.map((product) => (
+      <div className="product-grid" data-stagger="90" key={activeRange ?? "all"}>
+        {filtered.map((product) => (
           <ProductCard
             key={product.id}
             product={product}

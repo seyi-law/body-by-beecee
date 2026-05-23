@@ -8,8 +8,6 @@ import { ProductList } from "../components/ProductList";
 import { CartDrawer } from "../components/CartDrawer";
 import { FeaturedCollection } from "../components/FeaturedCollection";
 import { EditorialShowcase } from "../components/EditorialShowcase";
-import { BlogPreview } from "../components/BlogPreview";
-import { GalleryBand } from "../components/GalleryBand";
 import { Reviews } from "../components/Reviews";
 import { SiteFooter } from "../components/SiteFooter";
 import { Toast } from "../components/Toast";
@@ -109,9 +107,7 @@ export default function Home() {
       </section>
 
       <FeaturedCollection />
-      <EditorialShowcase />
-      <BlogPreview />
-      <GalleryBand />
+      <EditorialShowcase onAddToCart={addToCart} />
       <Reviews />
       <SiteFooter />
 

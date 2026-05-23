@@ -67,19 +67,9 @@ export function AnimationProvider() {
       return;
     }
 
-    /* ── 3. Auto-stagger children ───────────────────────── */
-    document.querySelectorAll("[data-stagger]").forEach((parent) => {
-      const step = Number(parent.dataset.stagger) || 90;
-      parent
-        .querySelectorAll(
-          ":scope > [data-animate], :scope > * > [data-animate]"
-        )
-        .forEach((child, i) => {
-          if (!child.dataset.delay) child.dataset.delay = String(i * step);
-        });
-    });
+    /* ── 3. Auto-stagger children & 4. Intersection Observer (Dynamic via MutationObserver) ── */
+    const observedElements = new WeakSet();
 
-    /* ── 4. Intersection Observer ───────────────────────── */
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach(({ target, isIntersecting }) => {
@@ -92,9 +82,43 @@ export function AnimationProvider() {
       { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
     );
 
-    document
-      .querySelectorAll("[data-animate], [data-text-split]")
-      .forEach((el) => io.observe(el));
+    function observeNewElements() {
+      // 1. Assign stagger delays dynamically to any elements container
+      document.querySelectorAll("[data-stagger]").forEach((parent) => {
+        const step = Number(parent.dataset.stagger) || 90;
+        parent
+          .querySelectorAll(
+            ":scope > [data-animate], :scope > * > [data-animate]"
+          )
+          .forEach((child, i) => {
+            // Note: we re-apply delays for dynamic lists so stagger indexes reset properly
+            child.dataset.delay = String(i * step);
+          });
+      });
+
+      // 2. Observe any unobserved animate or text-split targets
+      document
+        .querySelectorAll("[data-animate], [data-text-split]")
+        .forEach((el) => {
+          if (!observedElements.has(el)) {
+            io.observe(el);
+            observedElements.add(el);
+          }
+        });
+    }
+
+    // Initial check
+    observeNewElements();
+
+    // Listen for DOM changes to automatically capture dynamic React updates
+    const mutationObserver = new MutationObserver(() => {
+      observeNewElements();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
 
     /* ── 5. 3-D tilt on hover ───────────────────────────── */
     const MAX = 7;
@@ -123,6 +147,7 @@ export function AnimationProvider() {
 
     return () => {
       io.disconnect();
+      mutationObserver.disconnect();
       tiltEls.forEach((el) => {
         el.removeEventListener("mousemove", onMove);
         el.removeEventListener("mouseleave", onLeave);

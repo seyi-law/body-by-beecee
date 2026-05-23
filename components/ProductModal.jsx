@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Star, X, ShoppingBag } from "lucide-react";
 import { formatPrice } from "../app/data/content";
 
 export function ProductModal({ product, open, onClose, onAddToCart }) {
+  const [selectedVariant, setSelectedVariant] = useState(null);
+
   // Lock background scroll when modal is open
   useEffect(() => {
     if (open) {
@@ -18,7 +20,26 @@ export function ProductModal({ product, open, onClose, onAddToCart }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    setSelectedVariant(
+      product?.variants?.reduce((highest, variant) =>
+        variant.price > highest.price ? variant : highest
+      ) ?? null
+    );
+  }, [product]);
+
   if (!open || !product) return null;
+
+  const selectedProduct = selectedVariant
+    ? {
+        ...product,
+        id: `${product.id}-${selectedVariant.id}`,
+        parentId: product.id,
+        price: selectedVariant.price,
+        size: selectedVariant.label,
+        selectedVariant,
+      }
+    : product;
 
   return (
     <>
@@ -59,12 +80,12 @@ export function ProductModal({ product, open, onClose, onAddToCart }) {
                 <Star size={14} fill="currentColor" className="icon-accent" />
                 <span>{product.rating || "4.9"} rating</span>
               </div>
-              <span className="product-modal__size">{product.size}</span>
+              <span className="product-modal__size">{selectedProduct.size}</span>
             </div>
 
             <div className="product-modal__price">
               <strong className="product-modal__price-current">
-                {formatPrice(product.price)}
+                {formatPrice(selectedProduct.price)}
               </strong>
               {product.compareAt && (
                 <span className="product-modal__price-compare">
@@ -73,11 +94,33 @@ export function ProductModal({ product, open, onClose, onAddToCart }) {
               )}
             </div>
 
+            {product.variants && (
+              <div className="product-modal__variants" aria-label={`${product.name} sizes`}>
+                <span>Choose size</span>
+                <div className="product-modal__variant-options">
+                  {product.variants.map((variant) => (
+                    <button
+                      className={`product-modal__variant ${selectedVariant?.id === variant.id ? "product-modal__variant--active" : ""}`}
+                      type="button"
+                      key={variant.id}
+                      onClick={() => setSelectedVariant(variant)}
+                    >
+                      <strong>{variant.label}</strong>
+                      <small>{formatPrice(variant.price)}</small>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="product-modal__divider" />
 
             <div className="product-modal__description">
               <h4>About the product</h4>
               <p>{product.description}</p>
+              {product.story?.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="product-modal__actions">
@@ -85,12 +128,12 @@ export function ProductModal({ product, open, onClose, onAddToCart }) {
                 className="button button--primary button--full"
                 type="button"
                 onClick={() => {
-                  onAddToCart(product);
+                  onAddToCart(selectedProduct);
                   onClose();
                 }}
               >
                 <ShoppingBag size={18} />
-                Add to bag — {formatPrice(product.price)}
+                Add to bag - {formatPrice(selectedProduct.price)}
               </button>
             </div>
           </div>

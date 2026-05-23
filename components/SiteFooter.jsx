@@ -9,7 +9,7 @@ export function SiteFooter() {
       <section className="cta-banner" data-animate="fade-up">
         <div className="cta-banner__image">
           <Image
-            src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1000&q=80"
+            src="/images/products/orange-set-landscape.webp"
             alt="Glowing skin close up"
             fill
             sizes="(max-width: 900px) 90vw, 36vw"
@@ -34,7 +34,6 @@ export function SiteFooter() {
         </div>
         <div className="site-footer__links">
           <a href="#collection">Shop</a>
-          <a href="#journal">Journal</a>
           <a href="#reviews">Reviews</a>
         </div>
         <div className="site-footer__social" aria-label="Social links">
